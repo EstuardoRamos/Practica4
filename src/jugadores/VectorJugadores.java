@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package jugadores;
 
 /**
@@ -11,7 +5,7 @@ package jugadores;
  * @author Estuardo Ramos
  */
 public class VectorJugadores {
-    Jugador[] jugadores= new Jugador[10];
+    private Jugador[] jugadores= new Jugador[10];
     private int cont=1;
     
     

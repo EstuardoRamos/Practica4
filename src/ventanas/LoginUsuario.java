@@ -7,6 +7,7 @@ package ventanas;
 
 import jugadores.VectorJugadores;
 
+
 /**
  *
  * @author Estuardo Ramos
@@ -20,7 +21,7 @@ public class LoginUsuario extends javax.swing.JFrame {
     
     public LoginUsuario() {
         initComponents();
-        setVisible(true);
+        //setVisible(true);
     }
 
     /**
@@ -133,15 +134,15 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseActionPerformed
-       String name=nombre.getText();
-       String apelli=apellido.getText();
-       
-        System.out.println(name+" "+apelli);
-      jugadores.ingresarJugadores(name, apelli);
-       nombre.setText("");
-       apellido.setText("");
-       
-      jugadores.mostrarDatos();
+        String name = nombre.getText();
+        String apelli = apellido.getText();
+
+        System.out.println(name + " " + apelli);
+        jugadores.ingresarJugadores(name, apelli);
+        nombre.setText("");
+        apellido.setText("");
+
+        jugadores.mostrarDatos();
     }//GEN-LAST:event_registrarseActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
@@ -177,6 +178,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new LoginUsuario().setVisible(true);
             }
