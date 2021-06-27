@@ -15,14 +15,18 @@ import javax.swing.*;
  * @author Estuardo Ramos
  */
 public class Tablero extends javax.swing.JFrame {
-    JLabel[][] casillas;
-    JPanel tablita = new JPanel();
-    ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg");
+    private JLabel[][] casillas;
+    private JPanel tablita = new JPanel();
+    private ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg","src/imagenes/fichaNs.jpg");
+    private ImageIcon image2 = new ImageIcon("src/imagenes/fichaNs.jpg");
+    private int[][] noCas;
+    private char ficha;
 
     
     Scanner scanner = new Scanner(System.in);
     public Tablero() {
         initComponents();
+        //ficha=
         JLabel label2= new JLabel("Probando labe");
         //mostrarTablero();
         crearTabla(5,5);
@@ -100,7 +104,8 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioPActionPerformed
-        casillas[4][0].setIcon(null);
+        
+            casillas[4][0].setIcon(null);
         casillas[1][4].setIcon(image);
         
     }//GEN-LAST:event_cambioPActionPerformed
@@ -165,7 +170,7 @@ public class Tablero extends javax.swing.JFrame {
     
     public void crearTabla(int x, int y){
         
-        int[][] noCas= new int[y][x];
+        noCas= new int[y][x];
         casillas = new JLabel[y][x];
         tablita = new JPanel();
         JPanel[][] cuadros = new JPanel[x][y];
@@ -203,6 +208,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         }
         casillas[4][0].setIcon(image);
+        casillas[4][0].setIcon(image2);
         fondo.add(tablita);
         tablita.setVisible(true);
         
