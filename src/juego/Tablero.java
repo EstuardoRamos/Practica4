@@ -7,6 +7,7 @@ package juego;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Scanner;
 import javax.swing.*;
 
 /**
@@ -18,6 +19,7 @@ public class Tablero extends javax.swing.JFrame {
     /**
      * Creates new form Tablero
      */
+    Scanner scanner = new Scanner(System.in);
     public Tablero() {
         initComponents();
         JLabel label2= new JLabel("Probando labe");
@@ -39,6 +41,7 @@ public class Tablero extends javax.swing.JFrame {
         fondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cambioP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,13 +49,22 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel2.setText("Jugador2");
 
+        cambioP.setText("cambio");
+        cambioP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambioPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(872, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(852, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cambioP)
+                    .addComponent(jLabel1))
                 .addGap(77, 77, 77)
                 .addComponent(jLabel2)
                 .addGap(70, 70, 70))
@@ -64,7 +76,9 @@ public class Tablero extends javax.swing.JFrame {
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(cambioP)
+                .addContainerGap(522, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,6 +97,10 @@ public class Tablero extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cambioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioPActionPerformed
+        crearTabla(6, 6);
+    }//GEN-LAST:event_cambioPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,11 +157,15 @@ public class Tablero extends javax.swing.JFrame {
         }
         fondo.add(tablas);
         tablas.setVisible(true);
+        
     }
     
     public void crearTabla(int x, int y){
+        ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg");
+        int[][] noCas= new int[y][x];
         JLabel[][] casillas = new JLabel[y][x];
         JPanel tablita = new JPanel();
+        JPanel[][] cuadros = new JPanel[x][y];
         tablita.setBounds(20, 25, 750, 750);
         tablita.setLayout(new GridLayout(y, x));
         int no=0;
@@ -156,22 +178,40 @@ public class Tablero extends javax.swing.JFrame {
                     no=x-j;
                     //no--;
                 }
+                
                 int celda=(y-i-1)*(x)+(no);
                 //         6 -4*5+
-                casillas[i][j]= new JLabel("casila"+no+" "+celda);
+                
+                noCas[i][j]=celda;
+                
+                casillas[i][j]= new JLabel("casila "+celda);
+                
                 casillas[i][j].setOpaque(true);
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
-                casillas[i][j].setBackground(Color.GREEN);
+                casillas[i][j].setBackground(Color.YELLOW);
+                
+                //cuadros[i][j]=new JPanel();
+                //cuadros[i][j].setBackground(Color.BLUE);
+                //cuadros[i][j].setToolTipText("casila "+celda);
+                //tablita.add(cuadros[i][j]);
+                
                 tablita.add(casillas[i][j]);
             }
         }
+        casillas[4][0].setIcon(image);
+        fondo.add(tablita);
+        tablita.setVisible(true);
+        casillas[4][4].setIcon(image);
         fondo.add(tablita);
         tablita.setVisible(true);
         
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cambioP;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
