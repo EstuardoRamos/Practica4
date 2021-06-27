@@ -70,7 +70,11 @@ public class Jugador {
     public void setPartidasPer(int partidasPer) {
         this.partidasPer = partidasPer;
     }
-    
+    public int tirarDado(){
+        int numAl=0;
+        numAl= (int) (Math.random()*6+1);
+        return numAl;
+    }
     
 
 }

@@ -15,16 +15,17 @@ import javax.swing.*;
  * @author Estuardo Ramos
  */
 public class Tablero extends javax.swing.JFrame {
+    JLabel[][] casillas;
+    JPanel tablita = new JPanel();
+    ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg");
 
-    /**
-     * Creates new form Tablero
-     */
+    
     Scanner scanner = new Scanner(System.in);
     public Tablero() {
         initComponents();
         JLabel label2= new JLabel("Probando labe");
         //mostrarTablero();
-        crearTabla(5,6);
+        crearTabla(5,5);
         //tabla.add(label2);
         //mostrarTablero();
     }
@@ -99,7 +100,9 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioPActionPerformed
-        crearTabla(6, 6);
+        casillas[4][0].setIcon(null);
+        casillas[1][4].setIcon(image);
+        
     }//GEN-LAST:event_cambioPActionPerformed
 
     /**
@@ -136,7 +139,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
     }
-    public void mostrarTablero() {
+   /* public void mostrarTablero() {
         JPanel tablas = new JPanel();
         tablas.setBounds(20, 25, 750, 750);
         tablas.setLayout(new GridLayout(6, 6));
@@ -158,13 +161,13 @@ public class Tablero extends javax.swing.JFrame {
         fondo.add(tablas);
         tablas.setVisible(true);
         
-    }
+    }*/
     
     public void crearTabla(int x, int y){
-        ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg");
+        
         int[][] noCas= new int[y][x];
-        JLabel[][] casillas = new JLabel[y][x];
-        JPanel tablita = new JPanel();
+        casillas = new JLabel[y][x];
+        tablita = new JPanel();
         JPanel[][] cuadros = new JPanel[x][y];
         tablita.setBounds(20, 25, 750, 750);
         tablita.setLayout(new GridLayout(y, x));
@@ -200,9 +203,6 @@ public class Tablero extends javax.swing.JFrame {
             }
         }
         casillas[4][0].setIcon(image);
-        fondo.add(tablita);
-        tablita.setVisible(true);
-        casillas[4][4].setIcon(image);
         fondo.add(tablita);
         tablita.setVisible(true);
         
