@@ -5,27 +5,35 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.*;
+import jugadores.Jugador;
+import jugadores.VectorJugadores;
 
 /**
  *
  * @author Estuardo Ramos
  */
 public class Tablero extends javax.swing.JFrame {
+    private VectorJugadores jugadores;
     private JLabel[][] casillas;
     private JPanel tablita = new JPanel();
-    private ImageIcon image = new ImageIcon("src/imagenes/fichaRn.jpg","src/imagenes/fichaNs.jpg");
-    private ImageIcon image2 = new ImageIcon("src/imagenes/fichaNs.jpg");
+    private ImageIcon fichaRoja = new ImageIcon("src/imagenes/fichaRn.jpg","src/imagenes/fichaNs.jpg");
+    private ImageIcon fichaNegra = new ImageIcon("src/imagenes/fichaNs.jpg");
+    private ImageIcon fichaVacia = new ImageIcon("");
     private int[][] noCas;
     private char ficha;
+    Jugador[] jugador;
+    private int x=5;
+    private int y=5;
 
     
     Scanner scanner = new Scanner(System.in);
     public Tablero() {
         initComponents();
-        //ficha=
+        //jugadores1.addItem(jugadores.getJugadoresInf());
         JLabel label2= new JLabel("Probando labe");
         //mostrarTablero();
-        crearTabla(5,5);
+        crearTabla(x,y);
+        
         //tabla.add(label2);
         //mostrarTablero();
     }
@@ -39,6 +47,8 @@ public class Tablero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cambioP = new javax.swing.JButton();
+        jugadores1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,29 +63,44 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(852, Short.MAX_VALUE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cambioP)
-                    .addComponent(jLabel1))
-                .addGap(77, 77, 77)
-                .addComponent(jLabel2)
-                .addGap(70, 70, 70))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addContainerGap(808, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(fondoLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(135, 135, 135)
+                            .addComponent(jLabel2)
+                            .addGap(76, 76, 76))
+                        .addGroup(fondoLayout.createSequentialGroup()
+                            .addComponent(jugadores1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(25, 25, 25)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addComponent(cambioP)
+                        .addGap(174, 174, 174))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addGap(104, 104, 104)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jugadores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(62, 62, 62)
+                .addGap(102, 102, 102)
                 .addComponent(cambioP)
-                .addContainerGap(522, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,10 +121,10 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioPActionPerformed
-        
+        turnoMover();
             //casillas[4][0].setIcon(null);
         //casillas[1][4].setIcon(image);
-        moverFicha(6, 3, 4, casillas);
+        //moverFicha(6, 3, 4, casillas);
         
     }//GEN-LAST:event_cambioPActionPerformed
 
@@ -143,7 +168,7 @@ public class Tablero extends javax.swing.JFrame {
         casillas = new JLabel[y][x];
         tablita = new JPanel();
         JPanel[][] cuadros = new JPanel[x][y];
-        tablita.setBounds(20, 25, 750, 750);
+        tablita.setBounds(20, 55, 750, 750);
         tablita.setLayout(new GridLayout(y, x));
         int no=0;
         for (int i = 0; i < y; i++) {
@@ -158,33 +183,44 @@ public class Tablero extends javax.swing.JFrame {
                 
                 int celda=(y-i-1)*(x)+(no);
                 //         6 -4*5+
-                
                 noCas[i][j]=celda;
-                
-                casillas[i][j]= new JLabel("casila "+celda);
-                
+                casillas[i][j]= new JLabel("casila "+celda+"•");
                 casillas[i][j].setOpaque(true);
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
                 casillas[i][j].setBackground(Color.YELLOW);
-                
-                //cuadros[i][j]=new JPanel();
-                //cuadros[i][j].setBackground(Color.BLUE);
-                //cuadros[i][j].setToolTipText("casila "+celda);
-                //tablita.add(cuadros[i][j]);
-                
                 tablita.add(casillas[i][j]);
             }
         }
-        casillas[4][0].setIcon(image);
-        casillas[4][0].setIcon(image2);
+        casillas[4][0].setIcon(fichaRoja);
+        casillas[4][0].setIcon(fichaNegra);
         fondo.add(tablita);
         tablita.setVisible(true);
+    }
+    
+    /*public void turnoMover(VectorJugadores jugador1, VectorJugadores jugador2 ){
+        int tiro1=jugador1.tirarDado();
+        casillas[0][y].setIcon(fichaRoja);
+        moverFicha(tiro1, 0,y, fichaRoja);
+        int tiro2=jugador1.tirarDado();
+        casillas[0][y].setIcon(fichaNegra);
+        moverFicha(tiro2, 0,y, fichaNegra); 
         
+    }*/
+    
+    public void turnoMover(){
+        int tiro1=2;
+        casillas[y-1][0].setIcon(fichaRoja);
+        moverFicha(tiro1,y-1, 0, fichaRoja);
+        int tiro2=3;
+        casillas[y-1][0].setIcon(fichaNegra);
+        moverFicha(tiro2, y-1,0, fichaNegra); 
         
     }
-    public void moverFicha(int dado1,int i, int j, Object ficha[][] ){
-        //int suma= dado1;
+    
+    
+    public void moverFicha(int dado1,int i, int j, ImageIcon ficha ){
+        casillas[i][j].setIcon(fichaVacia);
         if (i%2==0) {
             int nR=5-(j+1);
             if (dado1<=nR) {
@@ -205,8 +241,13 @@ public class Tablero extends javax.swing.JFrame {
                 j=nR-1;
             }
         }
+        if (i==4 && j==2) {
+            i=3;
+            j=1;
+            
+        }
         System.out.println(i+" y "+j);
-        casillas[i][j].setIcon(image);
+        casillas[i][j].setIcon( ficha);
         
     }
     
@@ -214,7 +255,9 @@ public class Tablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cambioP;
     private javax.swing.JPanel fondo;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> jugadores1;
     // End of variables declaration//GEN-END:variables
 }

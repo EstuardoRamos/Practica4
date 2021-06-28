@@ -8,6 +8,14 @@ public class Jugador {
     private int partidasJug;
     private int partidasGanadas;
     private int partidasPer;
+    private String ficha;
+    private int cont=1;
+    Jugador[] jugador = new Jugador[10];
+
+    public Jugador() {
+    }
+    
+    
 
     public Jugador(int id, String nombre, String apellido) {
         this.id = id;
@@ -26,6 +34,30 @@ public class Jugador {
     @Override
     public String toString() {
         return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", partidasJug=" + partidasJug + ", partidasGanadas=" + partidasGanadas + ", partidasPer=" + partidasPer + '}';
+    }
+
+    public String getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(String ficha) {
+        this.ficha = ficha;
+    }
+
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
+
+    public Jugador[] getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador[] jugador) {
+        this.jugador = jugador;
     }
     
 
@@ -76,7 +108,41 @@ public class Jugador {
     public void setPartidasPer(int partidasPer) {
         this.partidasPer = partidasPer;
     }
+    public void ingresarJugadores(String nombre, String apellido){
+        jugador[(cont-1)] = new Jugador( cont, nombre,apellido);
+        cont++;
+    }
     
+    
+    public String mostrarDatos(){
+        String datos="";
+        for (int i = 0; i < cont-1; i++) {
+            datos= ("Id: "+jugador[i].getId()+"   Nombre: "+jugador[i].getNombre()+"  Apellido: "+jugador[i].getApellido()+ " Partidas Jugadas: "+jugador[i].getPartidasJug()+ " Partidas ganadas: "+jugador[i].getPartidasGanadas())+ " Partidas perdidas: "+jugador[i].getPartidasPer();
+        }
+        return datos;
+    
+    }
+    
+    public String getJugadoresInf(){
+        String nombre="";
+        for (int i = 0; i < cont-1; i++) {
+            nombre=jugador[i].getId()+" "+jugador[i].getNombre();
+            return nombre;
+        }
+        return nombre;
+    }
+    
+    
+    
+    public void seleccionarJugadores(){
+        
+    }
+    
+    public int tirarDado(){
+        int numAl=0;
+        numAl= (int) (Math.random()*6+1);
+        return numAl;
+    }
     
 
 }

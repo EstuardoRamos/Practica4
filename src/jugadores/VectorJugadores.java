@@ -8,6 +8,11 @@ public class VectorJugadores {
     private Jugador[] jugadores= new Jugador[10];
     private int cont=1;
 
+    public VectorJugadores() {
+    }
+    
+      
+
     public Jugador[] getJugadores() {
         return jugadores;
     }
@@ -28,8 +33,6 @@ public class VectorJugadores {
     
     public void ingresarJugadores(String nombre, String apellido){
         jugadores[(cont-1)] = new Jugador( cont, nombre,apellido);
-        //jugadores[cont-1].setNombre(nombre);
-        //jugadores[cont-1].setApellido(apellido);
         cont++;
     }
     
@@ -47,8 +50,15 @@ public class VectorJugadores {
         String nombre="";
         for (int i = 0; i < cont-1; i++) {
             nombre=jugadores[i].getId()+" "+jugadores[i].getNombre();
+            return nombre;
         }
         return nombre;
+    }
+    
+    
+    
+    public void seleccionarJugadores(){
+        
     }
     
     public int tirarDado(){
