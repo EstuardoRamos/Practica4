@@ -13,7 +13,7 @@ import jugadores.VectorJugadores;
  * @author Estuardo Ramos
  */
 public class Tablero extends javax.swing.JFrame {
-    private VectorJugadores jugadores;
+    //private VectorJugadores jugadores;
     private JLabel[][] casillas;
     private JPanel tablita = new JPanel();
     private ImageIcon fichaRoja = new ImageIcon("src/imagenes/fichaRn.jpg","src/imagenes/fichaNs.jpg");
@@ -21,9 +21,12 @@ public class Tablero extends javax.swing.JFrame {
     private ImageIcon fichaVacia = new ImageIcon("");
     private int[][] noCas;
     private char ficha;
+    private Jugador jugador1;
+    private Jugador jugador2;
     Jugador[] jugador;
     private int x=5;
     private int y=5;
+    
 
     
     Scanner scanner = new Scanner(System.in);
@@ -32,10 +35,13 @@ public class Tablero extends javax.swing.JFrame {
         //jugadores1.addItem(jugadores.getJugadoresInf());
         JLabel label2= new JLabel("Probando labe");
         //mostrarTablero();
-        crearTabla(x,y);
+        crearTabla(8,6);
         
         //tabla.add(label2);
         //mostrarTablero();
+    }
+    public Tablero(int x, int y, Jugador jugador1, Jugador jugador2) {
+        
     }
 
     
@@ -49,6 +55,7 @@ public class Tablero extends javax.swing.JFrame {
         cambioP = new javax.swing.JButton();
         jugadores1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        inicioPrueba = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +71,13 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        inicioPrueba.setText("inicioPruba");
+        inicioPrueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicioPruebaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -84,8 +98,10 @@ public class Tablero extends javax.swing.JFrame {
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(25, 25, 25)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                        .addComponent(cambioP)
-                        .addGap(174, 174, 174))))
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(inicioPrueba)
+                            .addComponent(cambioP))
+                        .addGap(163, 163, 163))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,9 +114,11 @@ public class Tablero extends javax.swing.JFrame {
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(102, 102, 102)
+                .addGap(31, 31, 31)
                 .addComponent(cambioP)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(inicioPrueba)
+                .addContainerGap(473, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,6 +145,12 @@ public class Tablero extends javax.swing.JFrame {
         //moverFicha(6, 3, 4, casillas);
         
     }//GEN-LAST:event_cambioPActionPerformed
+
+    private void inicioPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioPruebaActionPerformed
+        int xx=0;
+        int yy=y-1;
+      
+    }//GEN-LAST:event_inicioPruebaActionPerformed
 
    
     public static void main(String args[]) {
@@ -167,6 +191,7 @@ public class Tablero extends javax.swing.JFrame {
         noCas= new int[y][x];
         casillas = new JLabel[y][x];
         tablita = new JPanel();
+        JTextField txt = new JTextField("hola");
         JPanel[][] cuadros = new JPanel[x][y];
         tablita.setBounds(20, 55, 750, 750);
         tablita.setLayout(new GridLayout(y, x));
@@ -189,6 +214,7 @@ public class Tablero extends javax.swing.JFrame {
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
                 casillas[i][j].setBackground(Color.YELLOW);
+                casillas[i][j].add(txt);
                 tablita.add(casillas[i][j]);
             }
         }
@@ -255,6 +281,7 @@ public class Tablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cambioP;
     private javax.swing.JPanel fondo;
+    private javax.swing.JButton inicioPrueba;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

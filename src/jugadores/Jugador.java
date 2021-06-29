@@ -8,8 +8,26 @@ public class Jugador {
     private int partidasJug;
     private int partidasGanadas;
     private int partidasPer;
+    private int jx=0;
+    private int jy=0;
     private String ficha;
     private int cont=1;
+
+    public int getJx() {
+        return jx;
+    }
+
+    public void setJx(int jx) {
+        this.jx = jx;
+    }
+
+    public int getJy() {
+        return jy;
+    }
+
+    public void setJy(int jy) {
+        this.jy = jy;
+    }
     Jugador[] jugador = new Jugador[10];
 
     public Jugador() {
