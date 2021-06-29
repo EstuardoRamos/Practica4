@@ -1,6 +1,8 @@
 
 package jugadores;
 
+import javax.swing.ImageIcon;
+
 public class Jugador {
     private int id;
     private String nombre;
@@ -10,7 +12,8 @@ public class Jugador {
     private int partidasPer;
     private int jx=-50;
     private int jy=-50;
-    private String ficha;
+    private ImageIcon ficha;
+    //private String ficha;
     private int cont=1;
 
     public int getJx() {
@@ -49,17 +52,17 @@ public class Jugador {
         this.partidasPer = partidasPer;
     }
 
-    @Override
-    public String toString() {
-        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", partidasJug=" + partidasJug + ", partidasGanadas=" + partidasGanadas + ", partidasPer=" + partidasPer + '}';
-    }
-
-    public String getFicha() {
+    public ImageIcon getFicha() {
         return ficha;
     }
 
-    public void setFicha(String ficha) {
+    public void setFicha(ImageIcon ficha) {
         this.ficha = ficha;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", partidasJug=" + partidasJug + ", partidasGanadas=" + partidasGanadas + ", partidasPer=" + partidasPer + '}';
     }
 
     public int getCont() {
