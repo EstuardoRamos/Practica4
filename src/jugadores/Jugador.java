@@ -8,8 +8,8 @@ public class Jugador {
     private int partidasJug;
     private int partidasGanadas;
     private int partidasPer;
-    private int jx=0;
-    private int jy=0;
+    private int jx=-50;
+    private int jy=-50;
     private String ficha;
     private int cont=1;
 

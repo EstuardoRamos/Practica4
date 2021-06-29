@@ -20,12 +20,12 @@ public class Tablero extends javax.swing.JFrame {
     private ImageIcon fichaNegra = new ImageIcon("src/imagenes/fichaNs.jpg");
     private ImageIcon fichaVacia = new ImageIcon("");
     private int[][] noCas;
-    private char ficha;
-    private Jugador jugador1;
-    private Jugador jugador2;
+    private char fichaSS;
+    private Jugador jugador1= new Jugador(1, "Estua", "Ram");
+    private Jugador jugador2= new Jugador(  2, "mart", "Lops");
     Jugador[] jugador;
-    private int x=5;
-    private int y=5;
+    private int x=8;
+    private int y=6;
     
 
     
@@ -35,7 +35,7 @@ public class Tablero extends javax.swing.JFrame {
         //jugadores1.addItem(jugadores.getJugadoresInf());
         JLabel label2= new JLabel("Probando labe");
         //mostrarTablero();
-        crearTabla(8,6);
+        crearTabla(x,y);
         
         //tabla.add(label2);
         //mostrarTablero();
@@ -191,7 +191,6 @@ public class Tablero extends javax.swing.JFrame {
         noCas= new int[y][x];
         casillas = new JLabel[y][x];
         tablita = new JPanel();
-        JTextField txt = new JTextField("hola");
         JPanel[][] cuadros = new JPanel[x][y];
         tablita.setBounds(20, 55, 750, 750);
         tablita.setLayout(new GridLayout(y, x));
@@ -203,7 +202,6 @@ public class Tablero extends javax.swing.JFrame {
                     no++;
                 } else {
                     no=x-j;
-                    //no--;
                 }
                 
                 int celda=(y-i-1)*(x)+(no);
@@ -214,7 +212,6 @@ public class Tablero extends javax.swing.JFrame {
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
                 casillas[i][j].setBackground(Color.YELLOW);
-                casillas[i][j].add(txt);
                 tablita.add(casillas[i][j]);
             }
         }
@@ -235,32 +232,60 @@ public class Tablero extends javax.swing.JFrame {
     }*/
     
     public void turnoMover(){
-        int tiro1=2;
-        casillas[y-1][0].setIcon(fichaRoja);
-        moverFicha(tiro1,y-1, 0, fichaRoja);
-        int tiro2=3;
-        casillas[y-1][0].setIcon(fichaNegra);
-        moverFicha(tiro2, y-1,0, fichaNegra); 
+        System.out.println("jugador "+jugador1.getJx()+" y "+jugador1.getJy() +"posision x y y ficha");
+        int tiro1=jugador1.tirarDado();
+        System.out.println("Resultado dado "+tiro1);
+        //casillas[jugador1.getJx()][jugador1.getJy()].setIcon(fichaRoja);
+        moverFicha(tiro1,jugador1.getJx(), jugador1.getJy(), fichaRoja);
         
     }
     
     
     public void moverFicha(int dado1,int i, int j, ImageIcon ficha ){
-        casillas[i][j].setIcon(fichaVacia);
+        
+        /*if (jugador1.getJx()==0 && jugador1.getJy()==0){
+            jugador1.setJx(y-1);
+            jugador1.setJy(0);
+        }
+        System.out.println("jugador "+jugador1.getJx()+" y "+jugador1.getJy() );
+        
+        casillas[jugador1.getJx()][jugador1.getJy()].setIcon(fichaVacia);*/
+        
+        
+        //buscarCasilla(1);
+        //System.out.println(buscarCasilla(1));
+        if (y%2==0) {
+            if (i==-50 && j==-50){
+            jugador1.setJx(y-1);
+            jugador1.setJy(x-1);
+        }
+        } else {
+            if (i==-50 && j==-50){
+            jugador1.setJx(y-1);
+            jugador1.setJy(0);
+        }
+        }
+        
+        i=jugador1.getJx();
+        j=jugador1.getJy();
+        casillas[jugador1.getJx()][jugador1.getJy()].setIcon(ficha);
+        System.out.println("jugador "+jugador1.getJx()+" y "+jugador1.getJy()+"cambio si fuera 0" );
+        
+        casillas[jugador1.getJx()][jugador1.getJy()].setIcon(fichaVacia);
         if (i%2==0) {
-            int nR=5-(j+1);
+            int nR=x-(j+1);
             if (dado1<=nR) {
                 j=j+dado1;
             }
             else{
                 int s=dado1-nR;
                 i=i-1;
-                j=5-s;
+                j=x-s;
             }
         }else{
             if (dado1<=j) {
                 j=j-dado1;
-                i=i;
+                //i=i;
             } else{
                 int nR=dado1-j;
                 i=i-1;
@@ -272,10 +297,39 @@ public class Tablero extends javax.swing.JFrame {
             j=1;
             
         }
-        System.out.println(i+" y "+j);
-        casillas[i][j].setIcon( ficha);
+        
+        if (i<=0) {
+            System.out.println("Felicidades gano "+jugador1.getNombre());
+        }
+        
+        System.out.println(i+" y "+j+"posision que se pinta con imgen despues del dado");
+        jugador1.setJx(i);
+        jugador1.setJy(j);
+        casillas[i][j].setIcon(ficha);
+        System.out.println("jugador "+jugador1.getJx()+" y "+jugador1.getJy()+"posicion jugador despues del dado" );
+        System.out.println("");
         
     }
+    
+    /*public JLabel buscarCasilla(int noC){
+        JLabel casilla[][] = null;
+        int i, j = 0;
+        for ( i = 0; i < noCas.length && null == casilla; i++) {
+            for ( j = 0; j < noCas[i].length && null == casilla; j++) {
+ 
+                int e = noCas[i][j];
+ 
+                if (e == noC) {
+                    JLabel names = casilla[i][j];
+ 
+                }
+ 
+            }
+        }
+        return casilla[i][j];
+
+        }*/
+      
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
