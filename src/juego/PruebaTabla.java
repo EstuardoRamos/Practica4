@@ -63,7 +63,42 @@ public class PruebaTabla extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Jugador jugador1 = new Jugador(10, "CArlito", "marque");
         Jugador jugador2 = new Jugador(12, "mmmmm", "lop");
-        Tablero tablero = new Tablero(5, 5, jugador1, jugador2);
+        Tablero tablero = new Tablero(8, 6, jugador1, jugador2);
+        //tablero(6,8)
+        tablero.retrocede(0, 1, 4);
+        tablero.tiradados(0, 3);
+        tablero.subida(0, 4, 2, 6);
+        tablero.retrocede(0, 6, 6);
+        tablero.avanza(0, 7, 1);
+        tablero.avanza(1, 0, 4);
+        tablero.avanza(1, 1, 7);
+        tablero.pierdeturno(1, 3);
+        tablero.retrocede(1, 4, 9);
+        tablero.pierdeturno(1, 5);
+        tablero.retrocede(1, 6, 3);
+        tablero.pierdeturno(2, 0);
+        tablero.tiradados(2, 1);
+        tablero.pierdeturno(2, 2);
+        tablero.bajada(2, 4, 0, 4);
+        tablero.tiradados(2, 6);
+        tablero.avanza(2, 7, 4);
+        tablero.tiradados(3, 0);
+        tablero.avanza(3, 2, 6);
+        tablero.tiradados(3, 3);
+        tablero.avanza(3, 5, 2);
+        tablero.retrocede(3, 6, 4);
+        tablero.subida(4, 0, 5, 5);
+        tablero.retrocede(4, 1, 4);
+        tablero.pierdeturno(4, 3);
+        tablero.avanza(4, 4, 5);
+        tablero.tiradados(4, 5);
+        tablero.bajada(4, 6, 2, 4);
+        tablero.pierdeturno(5, 0);
+        tablero.tiradados(5, 1);
+        tablero.retrocede(5, 3, 3);
+        tablero.subida(5, 5, 5, 7);
+        tablero.retrocede(5, 6, 3);
+        //tablero.subida(3, 4, 4, 3);
         tablero.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

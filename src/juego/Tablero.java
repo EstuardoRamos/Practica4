@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.*;
+import javax.swing.border.Border;
 import jugadores.Jugador;
 import jugadores.VectorJugadores;
 
@@ -52,6 +53,40 @@ public class Tablero extends javax.swing.JFrame {
         btn_tiroJ2.setEnabled(false);
         
     }
+    
+    public void retrocede(int fila, int columna, int cantDePos){
+        casillas[fila][columna].setText("Retrocede  "+cantDePos+" hacia atras");
+        casillas[fila][columna].setBackground(Color.DARK_GRAY);
+    }
+    
+    public void avanza(int fila, int columna, int cantDePos){
+        casillas[fila][columna].setText("Avanza  "+cantDePos+" hacia atras");
+        casillas[fila][columna].setBackground(Color.GREEN);
+    }
+    
+    public void subida(int fI, int cI, int fF, int cF){
+        casillas[fI][cI].setBackground(Color.BLUE);
+        casillas[fF][cF].setBackground(Color.BLUE);
+    }
+    
+    public void bajada(int fI, int cI, int fF, int cF){
+        casillas[fI][cI].setBackground(Color.PINK);
+        casillas[fF][cF].setBackground(Color.PINK);
+    }
+    
+    public void pierdeturno(int fila,int columna){
+        casillas[fila][columna].setBackground(Color.CYAN);
+        casillas[fila][columna].setText(noCas[fila][columna]+" Pierde turno");
+    }
+    
+    public void tiradados(int fila, int columna){
+        casillas[fila][columna].setText(noCas[fila][columna]+" Tirar dado");
+        casillas[fila][columna].setBackground(Color.WHITE);
+    }
+    
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,7 +224,7 @@ public class Tablero extends javax.swing.JFrame {
         turnoMover(jugador1, dadoJ1);
         btn_tiroJ2.setEnabled(true);
         btn_tiroJ1.setEnabled(false);
-        buscarGanador();
+        
         
         
     }//GEN-LAST:event_btn_tiroJ1ActionPerformed
@@ -270,10 +305,10 @@ public class Tablero extends javax.swing.JFrame {
                 tablita.add(casillas[i][j]);
             }
         }
-        //casillas[4][2].setToolTipText("EI1");
-        casillas[3][1].setText("EF1");
+        
+        /*casillas[3][1].setText("EF1");
         casillas[4][2].setBackground(Color.DARK_GRAY);
-        casillas[3][1].setBackground(Color.DARK_GRAY);
+        casillas[3][1].setBackground(Color.DARK_GRAY);*/
         fondo.add(tablita);
         tablita.setVisible(true);
     }
@@ -361,7 +396,7 @@ public class Tablero extends javax.swing.JFrame {
             j = 1;
             
         }
-        
+        buscarGanador();
         if (i < 0 && j!=(x-1)) {
             System.out.println("Felicidades gano " + jugador.getNombre());
         } else{
@@ -372,7 +407,6 @@ public class Tablero extends javax.swing.JFrame {
         casillas[i][j].setIcon(ficha);
         System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "posicion jugador despues del dado");
         System.out.println("");
-        
             
         }
         
@@ -401,17 +435,29 @@ public class Tablero extends javax.swing.JFrame {
     public void buscarGanador(){
         if (jugador1.getJx()<0) {
             ganador.setText(jugador1.getNombre());
+            // Establecer datos jug1
             jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
-            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
             jugador1.setPartidasGanadas(jugador1.getPartidasGanadas()+1);
+            jugador1.setJx(-50);
+            jugador1.setJy(-50);
+            // Establecer datos jug2
             jugador2.setPartidasPer(jugador2.getPartidasPer()+1);
+            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador2.setJx(-50);
+            jugador2.setJy(-50);
             System.out.println("ganador color rojo");
         }else if (jugador2.getJx()<0) {
             ganador.setText(jugador2.getNombre());
-            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
             jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador1.setJx(-50);
+            jugador1.setJy(-50);
+            jugador2.setJx(-50);
+            jugador2.setJy(-50);
+            
+            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
             jugador1.setPartidasGanadas(jugador2.getPartidasGanadas()+1);
             jugador2.setPartidasPer(jugador1.getPartidasPer()+1);
+            crearTabla(x, y);
             System.out.println("ganador color negro");
         }
     }
