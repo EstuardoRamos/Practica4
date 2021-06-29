@@ -75,6 +75,13 @@
                           <Component id="inicioPrueba" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ganador" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -104,7 +111,11 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="inicioPrueba" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="485" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="ganador" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="335" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,6 +183,16 @@
         <Component class="javax.swing.JLabel" name="resDadoJ1">
         </Component>
         <Component class="javax.swing.JLabel" name="resDadoJ2">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ganador">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aun no hay ganador"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ganador!"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -67,6 +67,8 @@ public class Tablero extends javax.swing.JFrame {
         btn_tiroJ2 = new javax.swing.JButton();
         resDadoJ1 = new javax.swing.JLabel();
         resDadoJ2 = new javax.swing.JLabel();
+        ganador = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +98,10 @@ public class Tablero extends javax.swing.JFrame {
                 btn_tiroJ2ActionPerformed(evt);
             }
         });
+
+        ganador.setText("Aun no hay ganador");
+
+        jLabel1.setText("Ganador!");
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -128,7 +134,12 @@ public class Tablero extends javax.swing.JFrame {
                                     .addGap(60, 60, 60)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                         .addComponent(inicioPrueba)
-                        .addGap(134, 134, 134))))
+                        .addGap(134, 134, 134))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(ganador))
+                        .addGap(157, 157, 157))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +162,11 @@ public class Tablero extends javax.swing.JFrame {
                     .addComponent(resDadoJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inicioPrueba)
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addGap(86, 86, 86)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addComponent(ganador)
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,6 +189,7 @@ public class Tablero extends javax.swing.JFrame {
         turnoMover(jugador1, dadoJ1);
         btn_tiroJ2.setEnabled(true);
         btn_tiroJ1.setEnabled(false);
+        buscarGanador();
         
         
     }//GEN-LAST:event_btn_tiroJ1ActionPerformed
@@ -245,7 +261,8 @@ public class Tablero extends javax.swing.JFrame {
                 int celda = (y - i - 1) * (x) + (no);
                 //         6 -4*5+
                 noCas[i][j] = celda;
-                casillas[i][j] = new JLabel("casila " + celda + "•");
+                casillas[i][j] = new JLabel("" + celda + "•");
+                casillas[4][2] = new JLabel("" + celda + "   EI1");
                 casillas[i][j].setOpaque(true);
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
@@ -253,8 +270,10 @@ public class Tablero extends javax.swing.JFrame {
                 tablita.add(casillas[i][j]);
             }
         }
-        casillas[4][0].setIcon(fichaRoja);
-        casillas[4][0].setIcon(fichaNegra);
+        //casillas[4][2].setToolTipText("EI1");
+        casillas[3][1].setText("EF1");
+        casillas[4][2].setBackground(Color.DARK_GRAY);
+        casillas[3][1].setBackground(Color.DARK_GRAY);
         fondo.add(tablita);
         tablita.setVisible(true);
     }
@@ -336,22 +355,27 @@ public class Tablero extends javax.swing.JFrame {
                 j = nR - 1;
             }
         }
+        //escalera i=4 y j=2 para i3, j1
         if (i == 4 && j == 2) {
             i = 3;
             j = 1;
             
         }
         
-        if (i <= 0) {
+        if (i < 0 && j!=(x-1)) {
             System.out.println("Felicidades gano " + jugador.getNombre());
-        }
-        
-        System.out.println(i + " y " + j + "posision que se pinta con imgen despues del dado");
+        } else{
+            System.out.println(i + " y " + j + "posision que se pinta con imgen despues del dado");
         jugador.setJx(i);
         jugador.setJy(j);
+        
         casillas[i][j].setIcon(ficha);
         System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "posicion jugador despues del dado");
         System.out.println("");
+        
+            
+        }
+        
         
     }
 
@@ -373,13 +397,33 @@ public class Tablero extends javax.swing.JFrame {
         return casilla[i][j];
 
         }*/
+    
+    public void buscarGanador(){
+        if (jugador1.getJx()<0) {
+            ganador.setText(jugador1.getNombre());
+            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
+            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador1.setPartidasGanadas(jugador1.getPartidasGanadas()+1);
+            jugador2.setPartidasPer(jugador2.getPartidasPer()+1);
+            System.out.println("ganador color rojo");
+        }else if (jugador2.getJx()<0) {
+            ganador.setText(jugador2.getNombre());
+            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
+            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador1.setPartidasGanadas(jugador2.getPartidasGanadas()+1);
+            jugador2.setPartidasPer(jugador1.getPartidasPer()+1);
+            System.out.println("ganador color negro");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_tiroJ1;
     private javax.swing.JButton btn_tiroJ2;
     private javax.swing.JPanel fondo;
+    private javax.swing.JLabel ganador;
     private javax.swing.JButton inicioPrueba;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> jugadores1;
     private javax.swing.JLabel nameJ1;
     private javax.swing.JLabel nameJ2;
