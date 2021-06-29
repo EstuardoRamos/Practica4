@@ -46,12 +46,9 @@ public class VectorJugadores {
     
     }
     
-    public String getJugadoresInf(){
+    public String getJugadoresInf(int i){
         String nombre="";
-        for (int i = 0; i < cont-1; i++) {
             nombre=jugadores[i].getId()+" "+jugadores[i].getNombre();
-            return nombre;
-        }
         return nombre;
     }
     

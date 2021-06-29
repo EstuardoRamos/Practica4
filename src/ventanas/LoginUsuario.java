@@ -17,9 +17,9 @@ import jugadores.VectorJugadores;
 public class LoginUsuario extends javax.swing.JFrame {
     
     
-    //private VectorJugadores jugadores= new VectorJugadores();
-    //private String name;
-    //private String apelii;
+    private VectorJugadores jugadores;
+    private String name;
+    private String apelii;
     
     public LoginUsuario(VectorJugadores jugadores) {
         initComponents();
@@ -36,7 +36,7 @@ public class LoginUsuario extends javax.swing.JFrame {
                 apellido.setText("");
 
                 jugadores.mostrarDatos();
-                juga.addItem(jugadores.getJugadoresInf());
+                juga.addItem(jugadores.mostrarDatos());
 
             }
         });

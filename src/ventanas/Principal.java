@@ -10,7 +10,8 @@ import jugadores.VectorJugadores;
  * @author Estuardo Ramos
  */
 public class Principal extends javax.swing.JFrame {
-    Jugador jugador = new Jugador();
+    Jugador[] jugador = new Jugador[10];
+     private VectorJugadores jugadores= new VectorJugadores();
     public Principal() {
         initComponents();
     }
@@ -130,11 +131,16 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarPartidaActionPerformed
-        Tablero tablero= new Tablero();
-        tablero.setVisible(true);
+        //Tablero tablero= new Tablero();
+        //tablero.setVisible(true);
+        SeleccionJugadores sele = new SeleccionJugadores(jugadores);
+        sele.setVisible(true);
     }//GEN-LAST:event_iniciarPartidaActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
+        for (int i = 0; i < jugadores.getCont()-1; i++) {
+            System.out.println(jugadores.getJugadoresInf(i));
+        }
         
     }//GEN-LAST:event_reportesActionPerformed
 
