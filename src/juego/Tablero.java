@@ -44,6 +44,7 @@ public class Tablero extends javax.swing.JFrame {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         initComponents();
+        setLocationRelativeTo(null);
         crearTabla(x, y);
         casillas[0][7].setBackground(Color.magenta);
         casillas[0][7].setText("Fin");
@@ -507,9 +508,10 @@ public class Tablero extends javax.swing.JFrame {
             jugador2.setPartidasJug(jugador2.getPartidasJug() + 1);
             jugador2.setJx(-50);
             jugador2.setJy(-50);
-            setVisible(false);
+            
             System.out.println("ganador color rojo");
             JOptionPane.showMessageDialog(null, "Felicidades Gano "+jugador1.getNombre());
+            setVisible(false);
         } else if ((jugador2.getJx() == 0 && jugador2.getJy() == (x - 1)) || jugador2.getJx() < 0) {
             ganador.setText(jugador2.getNombre());
             jugador2.setPartidasJug(jugador2.getPartidasJug() + 1);
@@ -523,9 +525,10 @@ public class Tablero extends javax.swing.JFrame {
             //jugador1.setPartidasGanadas(jugador2.getPartidasGanadas()+1);
             jugador1.setPartidasPer(jugador1.getPartidasPer() + 1);
             //crearTabla(x, y);
-            setVisible(false);
+            
             System.out.println("ganador color negro");
             JOptionPane.showMessageDialog(null, "Felicidades Gano "+jugador2.getNombre());
+            setVisible(false);
         }
     }
 

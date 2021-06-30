@@ -31,6 +31,7 @@ public class LoginUsuario extends javax.swing.JFrame {
     public LoginUsuario(Jugador[] jugador, int contador) {
         this.conta=contador;
         initComponents();
+        setLocationRelativeTo(null);
         //setVisible(true);
         registrarse.addActionListener(new ActionListener() {
             @Override
