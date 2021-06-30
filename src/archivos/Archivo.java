@@ -13,6 +13,7 @@ public class Archivo {
     public static void main(String[] args) {
         String lectura = Archivo.lecturaArchivoTexto("/home/estuardo/Descargas/sinErrores.txt");
         System.out.println(lectura);
+        Archivo.escrituraArchivoTexto("Feliz navidad", "/home/estuardo/Descargas/sinErrores.txt");
     }
     
     public static String lecturaArchivoTexto(String pathArchivo) {

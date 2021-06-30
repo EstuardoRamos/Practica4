@@ -1,6 +1,7 @@
 
 package ventanas;
 
+import archivos.Archivo;
 import java.util.ArrayList;
 import juego.Tablero;
 import jugadores.Jugador;
@@ -25,6 +26,14 @@ public class Principal extends javax.swing.JFrame {
         jugador[contador-1]=jugNuev;
         contador++;
     }*/
+    
+    public String reportesJugadores(){
+        String info = null;
+        for (int i = 0; i < contador-1; i++) {
+            info+=jugador[i].toString()+"\n";
+        }
+        return info;
+    }
 
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -151,8 +160,9 @@ public class Principal extends javax.swing.JFrame {
         System.out.println(contador);
         for (int i = 0; i < contador-1; i++) {
             System.out.println(jugador[i].toString());
+            
         }
-        
+        Archivo.escrituraArchivoTexto(reportesJugadores(), "/home/estuardo/Documentos/hola.txt");
     }//GEN-LAST:event_reportesActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
