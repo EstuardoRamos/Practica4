@@ -1,6 +1,7 @@
 
 package ventanas;
 
+import java.util.ArrayList;
 import juego.Tablero;
 import jugadores.Jugador;
 import jugadores.VectorJugadores;
@@ -11,11 +12,19 @@ import jugadores.VectorJugadores;
  */
 public class Principal extends javax.swing.JFrame {
     Jugador[] jugador = new Jugador[10];
+    private int contador=1;
      private VectorJugadores jugadores= new VectorJugadores();
+     static ArrayList<Jugador> jugadoress = new ArrayList();
+     
+     
     public Principal() {
         initComponents();
     }
-    
+    /*public void agregarJugador(int id, String nombre, String apellido){
+        Jugador jugNuev = new Jugador(id, nombre, apellido );
+        jugador[contador-1]=jugNuev;
+        contador++;
+    }*/
 
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -133,13 +142,15 @@ public class Principal extends javax.swing.JFrame {
     private void iniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarPartidaActionPerformed
         //Tablero tablero= new Tablero();
         //tablero.setVisible(true);
-        SeleccionJugadores sele = new SeleccionJugadores(jugadores);
+        SeleccionJugadores sele = new SeleccionJugadores(jugador,contador);
         sele.setVisible(true);
+      
     }//GEN-LAST:event_iniciarPartidaActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
-        for (int i = 0; i < jugadores.getCont()-1; i++) {
-            System.out.println(jugadores.getJugadoresInf(i));
+        System.out.println(contador);
+        for (int i = 0; i < contador-1; i++) {
+            System.out.println(jugador[i].toString());
         }
         
     }//GEN-LAST:event_reportesActionPerformed
@@ -149,7 +160,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void registroJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroJugActionPerformed
-        LoginUsuario login = new LoginUsuario(jugadores);
+        LoginUsuario login = new LoginUsuario(jugador,contador);
+        contador++;
         login.setVisible(true);
     }//GEN-LAST:event_registroJugActionPerformed
 

@@ -1,5 +1,7 @@
 package jugadores;
 
+import javax.swing.JComboBox;
+
 /**
  * 
  * @author Estuardo Ramos
@@ -54,8 +56,14 @@ public class VectorJugadores {
     
     
     
-    public void seleccionarJugadores(){
-        
+    public Jugador seleccionarJugadores(Jugador jugador){
+        Jugador jugSelec = null;
+        for (int i = 0; i < cont-1; i++) {
+            if (jugador.equals(jugadores[i])) {
+                jugSelec=jugador;
+            }
+        }
+        return jugSelec;
     }
     
     public int tirarDado(){

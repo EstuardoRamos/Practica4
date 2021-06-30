@@ -50,6 +50,8 @@ public class Tablero extends javax.swing.JFrame {
         crearTabla(x, y);
         jugador1.setFicha(fichaRoja);
         jugador2.setFicha(fichaNegra);
+        nameJ1.setText(""+jugador1.getNombre());
+        nameJ2.setText(""+jugador2.getNombre());
         btn_tiroJ2.setEnabled(false);
         
     }
@@ -227,6 +229,7 @@ public class Tablero extends javax.swing.JFrame {
         
         
         
+        
     }//GEN-LAST:event_btn_tiroJ1ActionPerformed
 
     private void inicioPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioPruebaActionPerformed
@@ -241,6 +244,7 @@ public class Tablero extends javax.swing.JFrame {
         turnoMover(jugador2,dadoJ2);
         btn_tiroJ1.setEnabled(true);
         btn_tiroJ2.setEnabled(false);
+        
     }//GEN-LAST:event_btn_tiroJ2ActionPerformed
     
     public static void main(String args[]) {
@@ -369,8 +373,8 @@ public class Tablero extends javax.swing.JFrame {
         j = jugador.getJy();
         casillas[jugador.getJx()][jugador.getJy()].setIcon(ficha);
         System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "cambio si fuera 0");
-        
         casillas[jugador.getJx()][jugador.getJy()].setIcon(fichaVacia);
+        
         if (i % 2 == 0) {
             int nR = x - (j + 1);
             if (dado1 <= nR) {
@@ -396,13 +400,15 @@ public class Tablero extends javax.swing.JFrame {
             j = 1;
             
         }
-        buscarGanador();
-        if (i < 0 && j!=(x-1)) {
-            System.out.println("Felicidades gano " + jugador.getNombre());
-        } else{
-            System.out.println(i + " y " + j + "posision que se pinta con imgen despues del dado");
         jugador.setJx(i);
         jugador.setJy(j);
+        if (i == 0 && j==(x-1) || i<0) {
+            System.out.println("Felicidades gano " + jugador.getNombre());
+            buscarGanador();
+            
+            
+        } else{
+            System.out.println(i + " y " + j + "posision que se pinta con imgen despues del dado");
         
         casillas[i][j].setIcon(ficha);
         System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "posicion jugador despues del dado");
@@ -433,7 +439,7 @@ public class Tablero extends javax.swing.JFrame {
         }*/
     
     public void buscarGanador(){
-        if (jugador1.getJx()<0) {
+        if (jugador1.getJx()==0 && jugador1.getJy()<(x-1) || jugador1.getJx()<0) {
             ganador.setText(jugador1.getNombre());
             // Establecer datos jug1
             jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
@@ -446,7 +452,7 @@ public class Tablero extends javax.swing.JFrame {
             jugador2.setJx(-50);
             jugador2.setJy(-50);
             System.out.println("ganador color rojo");
-        }else if (jugador2.getJx()<0) {
+        }else if ((jugador2.getJx()==0 && jugador2.getJy()<(x-1)) || jugador2.getJx()<0) {
             ganador.setText(jugador2.getNombre());
             jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
             jugador1.setJx(-50);

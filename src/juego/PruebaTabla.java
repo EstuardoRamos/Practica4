@@ -62,8 +62,8 @@ public class PruebaTabla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Jugador jugador1 = new Jugador(10, "CArlito", "marque");
-        Jugador jugador2 = new Jugador(12, "mmmmm", "lop");
+        Jugador jugador1 = new Jugador(10, "Estuardo", "Ramos");
+        Jugador jugador2 = new Jugador(12, "Maria", "Lopez");
         Tablero tablero = new Tablero(8, 6, jugador1, jugador2);
         //tablero(6,8)
         tablero.retrocede(0, 1, 4);
