@@ -5,11 +5,13 @@
         <group>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/juego/Tablero.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/ventanas/LoginUsuario.java</file>
+            <file>file:/home/estuardo/NetBeansProjects/Practica4/src/archivos/Archivo.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/ventanas/Principal.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/practica4/Practica4.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/juego/Casilla.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/ventanas/JugadoresInf.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/jugadores/VectorJugadores.java</file>
+            <file>file:/home/estuardo/NetBeansProjects/Practica4/src/ventanas/SeleccionJugadores.java</file>
             <file>file:/home/estuardo/NetBeansProjects/Practica4/src/jugadores/Jugador.java</file>
         </group>
     </open-files>
