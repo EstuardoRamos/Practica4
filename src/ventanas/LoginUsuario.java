@@ -7,10 +7,8 @@ package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JComboBox;
 import jugadores.Jugador;
-import jugadores.VectorJugadores;
 
 
 /**
@@ -19,12 +17,9 @@ import jugadores.VectorJugadores;
  */
 public class LoginUsuario extends javax.swing.JFrame {
     
-    
-    private VectorJugadores jugadores;
     private String name;
     private String apelii;
     int conta;
-    ArrayList<Jugador> jugadoress;
     Jugador[] jugador;
     
     

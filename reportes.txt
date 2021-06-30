@@ -1,2 +1,6 @@
-nullId: 1   Nombre: Estuardo  Apellido: Ramos Partidas Jugadas: 0 Partidas ganadas: 0 Partidas perdidas: 0
+nullId: 1   Nombre: Estuardo  Apellido: Ramos Partidas Jugadas: 1 Partidas ganadas: 1 Partidas perdidas: 0
+Id: 2   Nombre: Maria  Apellido: ovalle Partidas Jugadas: 0 Partidas ganadas: 0 Partidas perdidas: 0
+Id: 3   Nombre: Carlos  Apellido: Juares Partidas Jugadas: 0 Partidas ganadas: 0 Partidas perdidas: 0
+Id: 4   Nombre: Diana  Apellido: Pere Partidas Jugadas: 1 Partidas ganadas: 0 Partidas perdidas: 1
+Id: 5   Nombre: Juan  Apellido: Perez Partidas Jugadas: 0 Partidas ganadas: 0 Partidas perdidas: 0
 

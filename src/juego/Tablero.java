@@ -2,11 +2,8 @@ package juego;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.Scanner;
 import javax.swing.*;
-import javax.swing.border.Border;
 import jugadores.Jugador;
-import jugadores.VectorJugadores;
 import ventanas.Principal;
 
 /**
@@ -28,14 +25,10 @@ public class Tablero extends javax.swing.JFrame {
     Jugador[] jugador;
     private int x = 8;
     private int y = 6;
-    
-    Scanner scanner = new Scanner(System.in);
+
 
     public Tablero() {
         initComponents();
-        JLabel label2 = new JLabel("Probando labe");
-        crearTabla(x, y);
-
     }
 
     public Tablero(int x, int y, Jugador jugador1, Jugador jugador2) {
@@ -92,10 +85,6 @@ public class Tablero extends javax.swing.JFrame {
         casillas[fila][columna].setText(noCas[fila][columna]+" Tirar dado");
         casillas[fila][columna].setBackground(Color.WHITE);
     }
-    
-    
-    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -246,11 +235,7 @@ public class Tablero extends javax.swing.JFrame {
         resDadoJ1.setText(" "+dadoJ1);
         turnoMover(jugador1, dadoJ1);
         btn_tiroJ2.setEnabled(true);
-        btn_tiroJ1.setEnabled(false);
-        
-        
-        
-        
+        btn_tiroJ1.setEnabled(false);    
     }//GEN-LAST:event_btn_tiroJ1ActionPerformed
 
     private void inicioPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioPruebaActionPerformed
@@ -268,37 +253,7 @@ public class Tablero extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_tiroJ2ActionPerformed
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tablero().setVisible(true);
-            }
-        });
-    }
+    
     
     public void crearTabla(int x, int y) {
         
@@ -331,23 +286,11 @@ public class Tablero extends javax.swing.JFrame {
                 
             }
         }
-        
-        /*casillas[3][1].setText("EF1");
-        casillas[4][2].setBackground(Color.DARK_GRAY);
-        casillas[3][1].setBackground(Color.DARK_GRAY);*/
         fondo.add(tablita);
         tablita.setVisible(true);
     }
 
-    /*public void turnoMover(VectorJugadores jugador1, VectorJugadores jugador2 ){
-        int tiro1=jugador1.tirarDado();
-        casillas[0][y].setIcon(fichaRoja);
-        moverFicha(tiro1, 0,y, fichaRoja);
-        int tiro2=jugador1.tirarDado();
-        casillas[0][y].setIcon(fichaNegra);
-        moverFicha(tiro2, 0,y, fichaNegra); 
-        
-    }*/
+    
     public void turnoMover() {
         System.out.println("jugador " + jugador1.getJx() + " y " + jugador1.getJy() + "posision x y y ficha");
         int tiro1 = jugador1.tirarDado();
@@ -369,16 +312,6 @@ public class Tablero extends javax.swing.JFrame {
     }
     
     public void moverFicha(int dado1,Jugador jugador, int i, int j, ImageIcon ficha) {
-
-        /*if (jugador1.getJx()==0 && jugador1.getJy()==0){
-            jugador1.setJx(y-1);
-            jugador1.setJy(0);
-        }
-        System.out.println("jugador "+jugador1.getJx()+" y "+jugador1.getJy() );
-        
-        casillas[jugador1.getJx()][jugador1.getJy()].setIcon(fichaVacia);*/
-        //buscarCasilla(1);
-        //System.out.println(buscarCasilla(1));
         if (y % 2 == 0) {
             if (i == -50 && j == -50) {
                 jugador.setJx(y - 1);

@@ -12,23 +12,13 @@ import jugadores.VectorJugadores;
  * @author Estuardo Ramos
  */
 public class SeleccionJugadores extends javax.swing.JFrame {
-
-    private VectorJugadores jugadores;
-    Jugador[] jugador;
-    Jugador jugadorr1;
-    Jugador jugadorr2;
-    ArrayList<Jugador> jugadoress;
+    
+    private Jugador[] jugador;
+    private Jugador jugadorr1;
+    private Jugador jugadorr2;
     private int cont;
     public SeleccionJugadores() {
         initComponents();
-    }
-    
-    public SeleccionJugadores(ArrayList<Jugador> jugadoress ) {
-        this.jugadores=jugadores;
-        initComponents();
-        agregarListaJ();
-        VectorJugadores j1= (VectorJugadores) listJug1.getSelectedItem();
-        jugador1.setText(j1.mostrarDatos());
     }
 
     public SeleccionJugadores(Jugador[] jugador, int cont) {
@@ -63,15 +53,48 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         }
         Tablero tablero = new Tablero(8, 6, jugadorr1, jugadorr2);
         tablero.setVisible(true);
-        tablero.subida(5, 3, 3, 5);
+        tablero.retrocede(0, 1, 4);
+        tablero.tiradados(0, 3);
+        tablero.subida(0, 4, 2, 6);
+        tablero.retrocede(0, 6, 6);
+        tablero.avanza(0, 7, 1);
+        tablero.avanza(1, 0, 4);
+        tablero.avanza(1, 1, 7);
+        tablero.pierdeturno(1, 3);
+        tablero.retrocede(1, 4, 9);
+        tablero.pierdeturno(1, 5);
+        tablero.retrocede(1, 6, 3);
+        tablero.pierdeturno(2, 0);
+        tablero.tiradados(2, 1);
+        tablero.pierdeturno(2, 2);
+        tablero.bajada(2, 4, 0, 4);
+        tablero.tiradados(2, 6);
+        tablero.avanza(2, 7, 4);
+        tablero.tiradados(3, 0);
+        tablero.avanza(3, 2, 6);
+        tablero.tiradados(3, 3);
+        tablero.avanza(3, 5, 2);
+        tablero.retrocede(3, 6, 4);
+        tablero.subida(4, 0, 5, 5);
+        tablero.retrocede(4, 1, 4);
+        tablero.pierdeturno(4, 3);
+        tablero.avanza(4, 4, 5);
+        tablero.tiradados(4, 5);
+        tablero.bajada(4, 6, 2, 4);
+        tablero.pierdeturno(5, 0);
+        tablero.tiradados(5, 1);
+        tablero.retrocede(5, 3, 3);
+        tablero.subida(5, 5, 5, 7);
+        tablero.retrocede(5, 6, 3);
+        
+        /*tablero.subida(5, 3, 3, 5);
         tablero.subida(3, 1, 2, 2);
         tablero.subida(2, 6, 1, 5);
         tablero.subida(1, 6, 0, 7);
         tablero.bajada(3, 2, 4, 1);
-        
         tablero.bajada(4,5,5,6);
         tablero.bajada(1,1,2,0);
-        tablero.bajada(0,6,1,4);
+        tablero.bajada(0,6,1,4);*/
         
     }
     
@@ -229,41 +252,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SeleccionJugadores().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

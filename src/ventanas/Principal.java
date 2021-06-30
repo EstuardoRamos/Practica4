@@ -32,11 +32,6 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
     }
-    /*public void agregarJugador(int id, String nombre, String apellido){
-        Jugador jugNuev = new Jugador(id, nombre, apellido );
-        jugador[contador-1]=jugNuev;
-        contador++;
-    }*/
     
     public String reportesJugadores(){
         String info = null;
@@ -158,8 +153,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarPartidaActionPerformed
-        //Tablero tablero= new Tablero();
-        //tablero.setVisible(true);
+       
         SeleccionJugadores sele = new SeleccionJugadores(jugador,contador);
         sele.setVisible(true);
       
@@ -169,8 +163,6 @@ public class Principal extends javax.swing.JFrame {
         System.out.println(contador);
         JTextArea repor = new JTextArea(reportesJugadores());
         JLabel jlb_repor = new JLabel(reportesJugadores());
-        //repor.setVisible(true);
-        //JOptionPane.showMessageDialog(repor, "Reportes");
         JOptionPane.showMessageDialog(null, repor, "Reportes", JOptionPane.INFORMATION_MESSAGE);
         for (int i = 0; i < contador-1; i++) {
             System.out.println(jugador[i].toString());
