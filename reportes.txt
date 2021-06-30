@@ -1,0 +1,2 @@
+nullId: 1   Nombre: Estuardo  Apellido: Ramos Partidas Jugadas: 0 Partidas ganadas: 0 Partidas perdidas: 0
+

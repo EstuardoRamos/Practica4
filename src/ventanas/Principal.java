@@ -176,7 +176,7 @@ public class Principal extends javax.swing.JFrame {
             System.out.println(jugador[i].toString());
             
         }
-        Archivo.escrituraArchivoTexto(reportesJugadores(), "/home/estuardo/Documentos/hola.txt");
+        Archivo.escrituraArchivoTexto(reportesJugadores(), "/home/estuardo/NetBeansProjects/Practica4/reportes.txt");
     }//GEN-LAST:event_reportesActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
