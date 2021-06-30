@@ -135,13 +135,9 @@ public class Jugador {
     }
     
     
-    public String mostrarDatos(){
-        String datos="";
-        for (int i = 0; i < cont-1; i++) {
-            datos= ("Id: "+jugador[i].getId()+"   Nombre: "+jugador[i].getNombre()+"  Apellido: "+jugador[i].getApellido()+ " Partidas Jugadas: "+jugador[i].getPartidasJug()+ " Partidas ganadas: "+jugador[i].getPartidasGanadas())+ " Partidas perdidas: "+jugador[i].getPartidasPer();
-        }
-        return datos;
-    
+    public String mostrarDatos() {
+        return ("Id: " + id + "   Nombre: " + nombre + "  Apellido: " + apellido + " Partidas Jugadas: " + partidasJug + " Partidas ganadas: " + partidasGanadas + " Partidas perdidas: " + partidasPer);
+
     }
     
     public String getJugadoresInf(){

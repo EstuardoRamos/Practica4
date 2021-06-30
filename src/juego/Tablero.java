@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import jugadores.Jugador;
 import jugadores.VectorJugadores;
+import ventanas.Principal;
 
 /**
  *
@@ -32,56 +33,61 @@ public class Tablero extends javax.swing.JFrame {
 
     public Tablero() {
         initComponents();
-        //jugadores1.addItem(jugadores.getJugadoresInf());
         JLabel label2 = new JLabel("Probando labe");
-        //mostrarTablero();
         crearTabla(x, y);
 
-        //tabla.add(label2);
-        //mostrarTablero();
     }
 
     public Tablero(int x, int y, Jugador jugador1, Jugador jugador2) {
-        this.x=x;
-        this.y=y;
-        this.jugador1=jugador1;
-        this.jugador2=jugador2;
+        this.x = x;
+        this.y = y;
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
         initComponents();
         crearTabla(x, y);
+        casillas[0][7].setBackground(Color.magenta);
+        casillas[0][7].setText("Fin");
         jugador1.setFicha(fichaRoja);
+        lbl_fichaJ1.setIcon(fichaRoja);
         jugador2.setFicha(fichaNegra);
-        nameJ1.setText(""+jugador1.getNombre());
-        nameJ2.setText(""+jugador2.getNombre());
+        lbl_fichaJ2.setIcon(fichaNegra);
+        //casillas[5][7].setIcon(fichaRoja);
+        nameJ1.setText("" + jugador1.getNombre());
+        nameJ2.setText("" + jugador2.getNombre());
         btn_tiroJ2.setEnabled(false);
         
     }
     
-    public void retrocede(int fila, int columna, int cantDePos){
-        casillas[fila][columna].setText("Retrocede  "+cantDePos+" hacia atras");
+    public void retrocede(int fila, int columna, int cantDePos){ //retroceder color griss
+        casillas[fila][columna].setText("Retro  "+cantDePos+"");
         casillas[fila][columna].setBackground(Color.DARK_GRAY);
     }
     
-    public void avanza(int fila, int columna, int cantDePos){
-        casillas[fila][columna].setText("Avanza  "+cantDePos+" hacia atras");
+    public void avanza(int fila, int columna, int cantDePos){ //avanzar casilla color verde
+        casillas[fila][columna].setText(noCas[fila][columna]+"Avanza  "+cantDePos+" hacia atras");
         casillas[fila][columna].setBackground(Color.GREEN);
     }
     
-    public void subida(int fI, int cI, int fF, int cF){
+    public void subida(int fI, int cI, int fF, int cF){ //subida o escalera color azul
+        casillas[fI][cI].setText(noCas[fI][cI]+" SubeIni");
+        casillas[fF][cF].setText(noCas[fF][cF]+" SubeFin");
         casillas[fI][cI].setBackground(Color.BLUE);
         casillas[fF][cF].setBackground(Color.BLUE);
     }
     
-    public void bajada(int fI, int cI, int fF, int cF){
+    public void bajada(int fI, int cI, int fF, int cF){ //Bajada o serpiente color rosa
+        casillas[fI][cI].setText(noCas[fI][cI]+" BajIni");
+        casillas[fF][cF].setText(noCas[fF][cF]+" BajFin");
         casillas[fI][cI].setBackground(Color.PINK);
         casillas[fF][cF].setBackground(Color.PINK);
     }
     
-    public void pierdeturno(int fila,int columna){
+    public void pierdeturno(int fila,int columna){ //pierde turno color cyan
         casillas[fila][columna].setBackground(Color.CYAN);
         casillas[fila][columna].setText(noCas[fila][columna]+" Pierde turno");
     }
     
-    public void tiradados(int fila, int columna){
+    public void tiradados(int fila, int columna){  //tirar dados casilla color blanco
         casillas[fila][columna].setText(noCas[fila][columna]+" Tirar dado");
         casillas[fila][columna].setBackground(Color.WHITE);
     }
@@ -104,6 +110,10 @@ public class Tablero extends javax.swing.JFrame {
         resDadoJ2 = new javax.swing.JLabel();
         ganador = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lbl_fichaJ1 = new javax.swing.JLabel();
+        lbl_fichaJ2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,46 +146,64 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel1.setText("Ganador!");
 
+        jLabel2.setText("Jugador 1");
+
+        jLabel3.setText("Jugador 2");
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(810, Short.MAX_VALUE)
+                .addContainerGap(854, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameJ1)
-                            .addComponent(btn_tiroJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resDadoJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(fondoLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_tiroJ2)
-                                    .addComponent(nameJ2))
-                                .addGap(52, 52, 52))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(resDadoJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                        .addComponent(inicioPrueba)
-                        .addGap(134, 134, 134))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(ganador))
-                        .addGap(157, 157, 157))))
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addComponent(inicioPrueba)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_fichaJ1)
+                        .addGroup(fondoLayout.createSequentialGroup()
+                            .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btn_tiroJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(resDadoJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addComponent(nameJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btn_tiroJ2)
+                                        .addComponent(resDadoJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(60, 60, 60))
+                                .addGroup(fondoLayout.createSequentialGroup()
+                                    .addGap(92, 92, 92)
+                                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(nameJ2)
+                                        .addComponent(lbl_fichaJ2))
+                                    .addGap(86, 86, 86)))))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(36, 36, 36)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(32, 32, 32)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameJ1)
                     .addComponent(nameJ2))
-                .addGap(44, 44, 44)
+                .addGap(38, 38, 38)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_fichaJ1)
+                    .addComponent(lbl_fichaJ2))
+                .addGap(59, 59, 59)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_tiroJ1)
                     .addComponent(btn_tiroJ2))
@@ -183,24 +211,30 @@ public class Tablero extends javax.swing.JFrame {
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(resDadoJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resDadoJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addComponent(inicioPrueba)
-                .addGap(86, 86, 86)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addComponent(ganador)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -287,12 +321,13 @@ public class Tablero extends javax.swing.JFrame {
                 //         6 -4*5+
                 noCas[i][j] = celda;
                 casillas[i][j] = new JLabel("" + celda + "•");
-                casillas[4][2] = new JLabel("" + celda + "   EI1");
+                //casillas[4][2] = new JLabel("" + celda + "   EI1");
                 casillas[i][j].setOpaque(true);
                 casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
                 casillas[i][j].setForeground(Color.red);
                 casillas[i][j].setBackground(Color.YELLOW);
                 tablita.add(casillas[i][j]);
+                
             }
         }
         
@@ -380,29 +415,63 @@ public class Tablero extends javax.swing.JFrame {
                 j = nR - 1;
             }
         }
-        //escalera i=4 y j=2 para i3, j1
-        if (i == 4 && j == 2) {
+        casillas[i][j].setIcon(ficha);
+        //escaleras subidas
+        if (i == 5 && j == 3) {
+            casillas[i][j].setIcon(fichaVacia);
             i = 3;
+            j = 5;
+        }
+        if (i == 3 && j == 1) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 2;
+            j = 2;
+        }
+        if (i == 2 && j == 6) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 1;
+            j = 5;
+        }
+        if (i == 1 && j == 6) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 0;
+            j = 7;
+        }
+        //bajadas
+        if (i == 3 && j == 2) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 4;
             j = 1;
-            
+        }
+        if (i == 4 && j == 5) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 5;
+            j = 6;
+        }
+        if (i == 1 && j == 1) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 2;
+            j = 0;
+        }
+        if (i == 0 && j == 6) {
+            casillas[i][j].setIcon(fichaVacia);
+            i = 1;
+            j = 4;
         }
         jugador.setJx(i);
         jugador.setJy(j);
-        if (i == 0 && j==(x-1) || i<0) {
+        if (i == 0 && j == (x - 1) || i < 0) {
             System.out.println("Felicidades gano " + jugador.getNombre());
             buscarGanador();
-            
-            
-        } else{
+
+        } else {
             System.out.println(i + " y " + j + "posision que se pinta con imgen despues del dado");
-        
-        casillas[i][j].setIcon(ficha);
-        System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "posicion jugador despues del dado");
-        System.out.println("");
-            
+            casillas[i][j].setIcon(ficha);
+            System.out.println("jugador " + jugador.getJx() + " y " + jugador.getJy() + "posicion jugador despues del dado");
+            System.out.println("");
+
         }
-        
-        
+
     }
 
     /*public JLabel buscarCasilla(int noC){
@@ -424,33 +493,39 @@ public class Tablero extends javax.swing.JFrame {
 
         }*/
     
-    public void buscarGanador(){
-        if (jugador1.getJx()==0 && jugador1.getJy()<(x-1) || jugador1.getJx()<0) {
+    public void buscarGanador() {
+
+        if (jugador1.getJx() == 0 && jugador1.getJy() == (x - 1) || jugador1.getJx() < 0) {
             ganador.setText(jugador1.getNombre());
             // Establecer datos jug1
-            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
-            jugador1.setPartidasGanadas(jugador1.getPartidasGanadas()+1);
+            jugador1.setPartidasJug(jugador1.getPartidasJug() + 1);
+            jugador1.setPartidasGanadas(jugador1.getPartidasGanadas() + 1);
             jugador1.setJx(-50);
             jugador1.setJy(-50);
             // Establecer datos jug2
-            jugador2.setPartidasPer(jugador2.getPartidasPer()+1);
-            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador2.setPartidasPer(jugador2.getPartidasPer() + 1);
+            jugador2.setPartidasJug(jugador2.getPartidasJug() + 1);
             jugador2.setJx(-50);
             jugador2.setJy(-50);
+            setVisible(false);
             System.out.println("ganador color rojo");
-        }else if ((jugador2.getJx()==0 && jugador2.getJy()<(x-1)) || jugador2.getJx()<0) {
+            JOptionPane.showMessageDialog(null, "Felicidades Gano "+jugador1.getNombre());
+        } else if ((jugador2.getJx() == 0 && jugador2.getJy() == (x - 1)) || jugador2.getJx() < 0) {
             ganador.setText(jugador2.getNombre());
-            jugador2.setPartidasJug(jugador2.getPartidasJug()+1);
+            jugador2.setPartidasJug(jugador2.getPartidasJug() + 1);
+            jugador2.setPartidasGanadas(jugador2.getPartidasGanadas() + 1);
             jugador1.setJx(-50);
             jugador1.setJy(-50);
             jugador2.setJx(-50);
             jugador2.setJy(-50);
-            
-            jugador1.setPartidasJug(jugador1.getPartidasJug()+1);
-            jugador1.setPartidasGanadas(jugador2.getPartidasGanadas()+1);
-            jugador2.setPartidasPer(jugador1.getPartidasPer()+1);
-            crearTabla(x, y);
+
+            jugador1.setPartidasJug(jugador1.getPartidasJug() + 1);
+            //jugador1.setPartidasGanadas(jugador2.getPartidasGanadas()+1);
+            jugador1.setPartidasPer(jugador1.getPartidasPer() + 1);
+            //crearTabla(x, y);
+            setVisible(false);
             System.out.println("ganador color negro");
+            JOptionPane.showMessageDialog(null, "Felicidades Gano "+jugador2.getNombre());
         }
     }
 
@@ -461,6 +536,10 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel ganador;
     private javax.swing.JButton inicioPrueba;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lbl_fichaJ1;
+    private javax.swing.JLabel lbl_fichaJ2;
     private javax.swing.JLabel nameJ1;
     private javax.swing.JLabel nameJ2;
     private javax.swing.JLabel resDadoJ1;

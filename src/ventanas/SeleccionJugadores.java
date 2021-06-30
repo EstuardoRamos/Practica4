@@ -62,6 +62,16 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         }
         Tablero tablero = new Tablero(8, 6, jugadorr1, jugadorr2);
         tablero.setVisible(true);
+        tablero.subida(5, 3, 3, 5);
+        tablero.subida(3, 1, 2, 2);
+        tablero.subida(2, 6, 1, 5);
+        tablero.subida(1, 6, 0, 7);
+        tablero.bajada(3, 2, 4, 1);
+        
+        tablero.bajada(4,5,5,6);
+        tablero.bajada(1,1,2,0);
+        tablero.bajada(0,6,1,4);
+        
     }
     
     
@@ -103,6 +113,11 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         });
 
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jugador2.setText("j2");
 
@@ -203,7 +218,14 @@ public class SeleccionJugadores extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         empezarPartida();
+        //setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
